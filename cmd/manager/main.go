@@ -11,7 +11,7 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/client-go/rest"
 
-	kubemetrics "github.com/arezvani/redis-operator/k8sutil"
+	kubemetrics "github.com/arezvani/redis-operator/kube-metrics"
 	"github.com/operator-framework/operator-lib/leader"
 	"github.com/operator-framework/operator-marketplace/pkg/metrics"
 	sdkVersion "github.com/operator-framework/operator-marketplace/pkg/version"
