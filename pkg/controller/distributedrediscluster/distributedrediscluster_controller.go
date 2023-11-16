@@ -22,15 +22,15 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"sigs.k8s.io/controller-runtime/pkg/source"
 
-	redisv1alpha1 "github.com/ucloud/redis-cluster-operator/pkg/apis/redis/v1alpha1"
-	"github.com/ucloud/redis-cluster-operator/pkg/config"
-	"github.com/ucloud/redis-cluster-operator/pkg/controller/heal"
-	clustermanger "github.com/ucloud/redis-cluster-operator/pkg/controller/manager"
-	"github.com/ucloud/redis-cluster-operator/pkg/exec"
-	"github.com/ucloud/redis-cluster-operator/pkg/k8sutil"
-	"github.com/ucloud/redis-cluster-operator/pkg/redisutil"
-	"github.com/ucloud/redis-cluster-operator/pkg/resources/statefulsets"
-	"github.com/ucloud/redis-cluster-operator/pkg/utils"
+	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
+	"github.com/arezvani/redis-operator/pkg/config"
+	"github.com/arezvani/redis-operator/pkg/controller/heal"
+	clustermanger "github.com/arezvani/redis-operator/pkg/controller/manager"
+	"github.com/arezvani/redis-operator/pkg/exec"
+	"github.com/arezvani/redis-operator/k8sutil"
+	"github.com/arezvani/redis-operator/pkg/redisutil"
+	"github.com/arezvani/redis-operator/pkg/resources/statefulsets"
+	"github.com/arezvani/redis-operator/pkg/utils"
 )
 
 var (

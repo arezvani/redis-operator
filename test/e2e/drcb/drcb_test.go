@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/ucloud/redis-cluster-operator/test/e2e"
+	"github.com/arezvani/redis-operator/test/e2e"
 )
 
 var (

@@ -3,7 +3,7 @@ package heal
 import (
 	"testing"
 
-	"github.com/ucloud/redis-cluster-operator/pkg/redisutil"
+	"github.com/arezvani/redis-operator/pkg/redisutil"
 )
 
 func Test_buildClustersLists(t *testing.T) {

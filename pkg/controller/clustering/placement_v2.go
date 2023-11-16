@@ -5,9 +5,9 @@ import (
 
 	"github.com/go-logr/logr"
 
-	redisv1alpha1 "github.com/ucloud/redis-cluster-operator/pkg/apis/redis/v1alpha1"
-	"github.com/ucloud/redis-cluster-operator/pkg/redisutil"
-	"github.com/ucloud/redis-cluster-operator/pkg/resources/statefulsets"
+	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
+	"github.com/arezvani/redis-operator/pkg/redisutil"
+	"github.com/arezvani/redis-operator/pkg/resources/statefulsets"
 )
 
 type Ctx struct {

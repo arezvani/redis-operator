@@ -11,11 +11,11 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/client-go/rest"
 
-	kubemetrics "github.com/arezvani/redis-operator/k8sutils"
+	kubemetrics "github.com/arezvani/redis-operator/k8sutil"
 	"github.com/operator-framework/operator-lib/leader"
 	"github.com/operator-framework/operator-marketplace/pkg/metrics"
 	sdkVersion "github.com/operator-framework/operator-marketplace/pkg/version"
-	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
+	"github.com/arezvani/redis-operator/k8sutil"
 	"github.com/spf13/pflag"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
@@ -26,14 +26,14 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	"sigs.k8s.io/controller-runtime/pkg/manager/signals"
 
-	"github.com/ucloud/redis-cluster-operator/pkg/apis"
-	redisv1alpha1 "github.com/ucloud/redis-cluster-operator/pkg/apis/redis/v1alpha1"
-	config2 "github.com/ucloud/redis-cluster-operator/pkg/config"
-	"github.com/ucloud/redis-cluster-operator/pkg/controller"
-	"github.com/ucloud/redis-cluster-operator/pkg/controller/distributedrediscluster"
-	"github.com/ucloud/redis-cluster-operator/pkg/controller/redisclusterbackup"
-	"github.com/ucloud/redis-cluster-operator/pkg/utils"
-	"github.com/ucloud/redis-cluster-operator/version"
+	"github.com/arezvani/redis-operator/pkg/apis"
+	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
+	config2 "github.com/arezvani/redis-operator/pkg/config"
+	"github.com/arezvani/redis-operator/pkg/controller"
+	"github.com/arezvani/redis-operator/pkg/controller/distributedrediscluster"
+	"github.com/arezvani/redis-operator/pkg/controller/redisclusterbackup"
+	"github.com/arezvani/redis-operator/pkg/utils"
+	"github.com/arezvani/redis-operator/version"
 )
 
 // Change below variables to serve metrics on different host or port.

@@ -1,7 +1,7 @@
 package apis
 
 import (
-	"github.com/ucloud/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
 )
 
 func init() {

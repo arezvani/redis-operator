@@ -1,4 +1,4 @@
-module github.com/ucloud/redis-cluster-operator
+module github.com/arezvani/redis-operator
 
 go 1.20
 
@@ -23,7 +23,6 @@ require (
 	k8s.io/apimachinery v0.27.4
 	k8s.io/client-go v0.27.4
 	k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9
-	k8s.io/kube-state-metrics v1.8.0
 	k8s.io/kubernetes v1.28.4
 	kmodules.xyz/constants v0.0.0-20230304030334-d2d1f28732a5
 	kmodules.xyz/objectstore-api v0.25.1
@@ -49,7 +48,6 @@ require (
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dgryski/go-jump v0.0.0-20170409065014-e1f439676b57 // indirect
 	github.com/docker/distribution v2.8.2+incompatible // indirect
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
 	github.com/evanphx/json-patch v5.6.0+incompatible // indirect
@@ -98,7 +96,6 @@ require (
 	github.com/prometheus/client_model v0.4.0 // indirect
 	github.com/prometheus/common v0.44.0 // indirect
 	github.com/prometheus/procfs v0.10.1 // indirect
-	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/spf13/cobra v1.7.0 // indirect
@@ -144,12 +141,10 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/apiextensions-apiserver v0.27.2 // indirect
 	k8s.io/apiserver v0.26.2 // indirect
-	k8s.io/autoscaler v0.0.0-20190607113959-1b4f1855cb8e // indirect
 	k8s.io/cloud-provider v0.0.0 // indirect
 	k8s.io/component-base v0.27.4 // indirect
 	k8s.io/component-helpers v0.26.0 // indirect
 	k8s.io/controller-manager v0.26.0 // indirect
-	k8s.io/klog v0.4.0 // indirect
 	k8s.io/klog/v2 v2.100.1 // indirect
 	k8s.io/kms v0.26.0 // indirect
 	k8s.io/kubelet v0.0.0 // indirect
