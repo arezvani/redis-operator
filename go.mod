@@ -23,6 +23,7 @@ require (
 	k8s.io/apimachinery v0.27.4
 	k8s.io/client-go v0.27.4
 	k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9
+	k8s.io/kube-state-metrics v1.9.8
 	k8s.io/kubernetes v1.28.4
 	kmodules.xyz/constants v0.0.0-20230304030334-d2d1f28732a5
 	kmodules.xyz/objectstore-api v0.25.1
