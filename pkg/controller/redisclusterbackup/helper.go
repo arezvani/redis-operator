@@ -9,7 +9,7 @@ import (
 	"k8s.io/client-go/rest"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
 )
 
 func (r *ReconcileRedisClusterBackup) markAsFailedBackup(backup *redisv1alpha1.RedisClusterBackup,

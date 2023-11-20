@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-logr/logr"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/utils"
 	"github.com/mediocregopher/radix.v2/redis"
-	"github.com/arezvani/redis-operator/pkg/utils"
 )
 
 const (
@@ -145,7 +145,7 @@ func (cnx *AdminConnections) GetAll() map[string]IClient {
 	return cnx.clients
 }
 
-//GetSelected returns a map of clients based on the input addresses
+// GetSelected returns a map of clients based on the input addresses
 func (cnx *AdminConnections) GetSelected(addrs []string) map[string]IClient {
 	clientsSelected := make(map[string]IClient)
 	for _, addr := range addrs {

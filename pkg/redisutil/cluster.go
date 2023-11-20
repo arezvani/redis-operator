@@ -1,7 +1,7 @@
 package redisutil
 
 import (
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
 )
 
 // Cluster represents a Redis Cluster

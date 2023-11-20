@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/arezvani/redis-operator/pkg/controller/redisclusterbackup"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/controller/redisclusterbackup"
 )
 
 func init() {

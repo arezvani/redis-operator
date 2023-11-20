@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/arezvani/redis-operator/pkg/redisutil"
-	"github.com/arezvani/redis-operator/pkg/utils"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/utils"
 )
 
 // RebalancedCluster rebalanced a redis cluster.

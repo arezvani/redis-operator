@@ -22,15 +22,15 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"sigs.k8s.io/controller-runtime/pkg/source"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
-	"github.com/arezvani/redis-operator/pkg/config"
-	"github.com/arezvani/redis-operator/pkg/controller/heal"
-	clustermanger "github.com/arezvani/redis-operator/pkg/controller/manager"
-	"github.com/arezvani/redis-operator/pkg/exec"
-	"github.com/arezvani/redis-operator/k8sutil"
-	"github.com/arezvani/redis-operator/pkg/redisutil"
-	"github.com/arezvani/redis-operator/pkg/resources/statefulsets"
-	"github.com/arezvani/redis-operator/pkg/utils"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/config"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/controller/heal"
+	clustermanger "github.com/mahdi8731/redis-cluster-operator/pkg/controller/manager"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/exec"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/k8sutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/resources/statefulsets"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/utils"
 )
 
 var (
@@ -66,7 +66,8 @@ func Add(mgr manager.Manager) error {
 		Version: "v1",
 		Kind:    "Pod",
 	}
-	restClient, err := apiutil.RESTClientForGVK(gvk, mgr.GetConfig(), serializer.NewCodecFactory(scheme.Scheme))
+	// unstructed false in not for base code
+	restClient, err := apiutil.RESTClientForGVK(gvk, false, mgr.GetConfig(), serializer.NewCodecFactory(scheme.Scheme))
 	if err != nil {
 		return err
 	}
@@ -103,13 +104,13 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 	pred := predicate.Funcs{
 		UpdateFunc: func(e event.UpdateEvent) bool {
 			// returns false if DistributedRedisCluster is ignored (not managed) by this operator.
-			if !utils.ShoudManage(e.MetaNew) {
+			if !utils.ShoudManage(e.ObjectNew) {
 				return false
 			}
-			log.WithValues("namespace", e.MetaNew.GetNamespace(), "name", e.MetaNew.GetName()).V(5).Info("Call UpdateFunc")
-			// Ignore updates to CR status in which case metadata.Generation does not change
-			if e.MetaOld.GetGeneration() != e.MetaNew.GetGeneration() {
-				log.WithValues("namespace", e.MetaNew.GetNamespace(), "name", e.MetaNew.GetName()).Info("Generation change return true",
+			log.WithValues("namespace", e.ObjectNew.GetNamespace(), "name", e.ObjectNew.GetName()).V(5).Info("Call UpdateFunc")
+			// Ignore updates to CR status in which case Objectdata.Generation does not change
+			if e.ObjectOld.GetGeneration() != e.ObjectNew.GetGeneration() {
+				log.WithValues("namespace", e.ObjectNew.GetNamespace(), "name", e.ObjectNew.GetName()).Info("Generation change return true",
 					"old", e.ObjectOld, "new", e.ObjectNew)
 				return true
 			}
@@ -117,19 +118,19 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		},
 		DeleteFunc: func(e event.DeleteEvent) bool {
 			// returns false if DistributedRedisCluster is ignored (not managed) by this operator.
-			if !utils.ShoudManage(e.Meta) {
+			if !utils.ShoudManage(e.Object) {
 				return false
 			}
-			log.WithValues("namespace", e.Meta.GetNamespace(), "name", e.Meta.GetName()).Info("Call DeleteFunc")
+			log.WithValues("namespace", e.Object.GetNamespace(), "name", e.Object.GetName()).Info("Call DeleteFunc")
 			// Evaluates to false if the object has been confirmed deleted.
 			return !e.DeleteStateUnknown
 		},
 		CreateFunc: func(e event.CreateEvent) bool {
 			// returns false if DistributedRedisCluster is ignored (not managed) by this operator.
-			if !utils.ShoudManage(e.Meta) {
+			if !utils.ShoudManage(e.Object) {
 				return false
 			}
-			log.WithValues("namespace", e.Meta.GetNamespace(), "name", e.Meta.GetName()).Info("Call CreateFunc")
+			log.WithValues("namespace", e.Object.GetNamespace(), "name", e.Object.GetName()).Info("Call CreateFunc")
 			return true
 		},
 	}
@@ -167,13 +168,13 @@ type ReconcileDistributedRedisCluster struct {
 // Note:
 // The Controller will requeue the Request to be processed again if the returned error is non-nil or
 // Result.Requeue is true, otherwise upon completion it will remove the work from the queue.
-func (r *ReconcileDistributedRedisCluster) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+func (r *ReconcileDistributedRedisCluster) Reconcile(req_ctx context.Context, request reconcile.Request) (reconcile.Result, error) {
 	reqLogger := log.WithValues("Request.Namespace", request.Namespace, "Request.Name", request.Name)
 	reqLogger.Info("Reconciling DistributedRedisCluster")
 
 	// Fetch the DistributedRedisCluster instance
 	instance := &redisv1alpha1.DistributedRedisCluster{}
-	err := r.client.Get(context.TODO(), request.NamespacedName, instance)
+	err := r.client.Get(req_ctx, request.NamespacedName, instance)
 	if err != nil {
 		if errors.IsNotFound(err) {
 			return reconcile.Result{}, nil

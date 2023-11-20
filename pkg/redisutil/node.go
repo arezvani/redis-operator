@@ -10,8 +10,8 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
-	"github.com/arezvani/redis-operator/pkg/utils"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/utils"
 )
 
 const (

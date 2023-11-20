@@ -10,11 +10,11 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
-	"github.com/arezvani/redis-operator/pkg/config"
-	"github.com/arezvani/redis-operator/pkg/osm"
-	"github.com/arezvani/redis-operator/pkg/resources/configmaps"
-	"github.com/arezvani/redis-operator/pkg/utils"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/config"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/osm"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/resources/configmaps"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/utils"
 )
 
 var log = logf.Log.WithName("resource_statefulset")
@@ -250,7 +250,7 @@ func redisServerContainer(cluster *redisv1alpha1.DistributedRedisCluster, passwo
 		LivenessProbe: &corev1.Probe{
 			InitialDelaySeconds: graceTime,
 			TimeoutSeconds:      5,
-			Handler: corev1.Handler{
+			ProbeHandler: corev1.ProbeHandler{
 				Exec: &corev1.ExecAction{
 					Command: []string{
 						"sh",
@@ -263,7 +263,7 @@ func redisServerContainer(cluster *redisv1alpha1.DistributedRedisCluster, passwo
 		ReadinessProbe: &corev1.Probe{
 			InitialDelaySeconds: graceTime,
 			TimeoutSeconds:      5,
-			Handler: corev1.Handler{
+			ProbeHandler: corev1.ProbeHandler{
 				Exec: &corev1.ExecAction{
 					Command: []string{
 						"sh",
@@ -286,12 +286,12 @@ func redisServerContainer(cluster *redisv1alpha1.DistributedRedisCluster, passwo
 		Resources: *cluster.Spec.Resources,
 		// TODO store redis data when pod stop
 		Lifecycle: &corev1.Lifecycle{
-			PostStart: &corev1.Handler{
+			PostStart: &corev1.LifecycleHandler{
 				Exec: &corev1.ExecAction{
 					Command: []string{"/bin/sh", "-c", "echo ${REDIS_PASSWORD} > /data/redis_password"},
 				},
 			},
-			PreStop: &corev1.Handler{
+			PreStop: &corev1.LifecycleHandler{
 				Exec: &corev1.ExecAction{
 					Command: []string{"/bin/sh", "/conf/shutdown.sh"},
 				},

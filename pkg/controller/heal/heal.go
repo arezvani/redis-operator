@@ -4,7 +4,7 @@ import (
 	"github.com/go-logr/logr"
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/arezvani/redis-operator/k8sutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/k8sutil"
 )
 
 type CheckAndHeal struct {

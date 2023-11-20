@@ -9,5 +9,5 @@ plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: new-redis-cluster-operator
-repo: github.com/arezvani/redis-operator
+repo: github.com/mahdi8731/redis-cluster-operator
 version: "3"

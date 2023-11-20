@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/arezvani/redis-operator/pkg/controller/distributedrediscluster"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/controller/distributedrediscluster"
 )
 
 func init() {

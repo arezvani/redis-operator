@@ -3,7 +3,7 @@ package clustering
 import (
 	"fmt"
 
-	"github.com/arezvani/redis-operator/pkg/redisutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
 )
 
 // AttachingSlavesToMaster used to attach slaves to there masters

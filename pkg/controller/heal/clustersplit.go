@@ -6,9 +6,9 @@ import (
 
 	"k8s.io/apimachinery/pkg/util/errors"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
-	"github.com/arezvani/redis-operator/pkg/config"
-	"github.com/arezvani/redis-operator/pkg/redisutil"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/config"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
 )
 
 // FixClusterSplit use to detect and fix Cluster split

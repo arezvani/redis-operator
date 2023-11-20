@@ -6,9 +6,9 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	redisv1alpha1 "github.com/arezvani/redis-operator/pkg/apis/redis/v1alpha1"
-	"github.com/arezvani/redis-operator/k8sutil"
-	"github.com/arezvani/redis-operator/pkg/resources/statefulsets"
+	redisv1alpha1 "github.com/mahdi8731/redis-cluster-operator/pkg/apis/redis/v1alpha1"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/k8sutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/resources/statefulsets"
 )
 
 type ICheck interface {

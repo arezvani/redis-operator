@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/arezvani/redis-operator/pkg/redisutil"
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
 )
 
 func TestDispatchSlotToMaster(t *testing.T) {

@@ -1,8 +1,9 @@
 package clustering
 
 import (
-	"github.com/arezvani/redis-operator/pkg/redisutil"
 	"testing"
+
+	"github.com/mahdi8731/redis-cluster-operator/pkg/redisutil"
 )
 
 func Test_computeReshardTable(t *testing.T) {
